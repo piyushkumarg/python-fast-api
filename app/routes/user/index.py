@@ -1,28 +1,14 @@
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter
+from controllers.user import handle_get_users, handle_create_user
+from schemas.user import UserCreate, UserResponse
+from typing import List
 
-user_router = APIRouter()
+router = APIRouter()
 
-# Temporary in-memory storage for example
-fake_users_db = [
-    {"id": 1, "name": "John Doe"},
-    {"id": 2, "name": "Jane Smith"}
-]
-
-@user_router.get("")
+@router.get("", response_model=List[UserResponse])
 async def get_all_users():
-    return {
-        "message": "Users retrieved successfully",
-        "data": fake_users_db
-    }
+    return handle_get_users()
 
-@user_router.post("")
-async def create_user(name: str):
-    new_user = {
-        "id": len(fake_users_db) + 1,
-        "name": name
-    }
-    fake_users_db.append(new_user)
-    return {
-        "message": "User created successfully",
-        "data": new_user
-    }
+@router.post("", response_model=UserResponse)
+async def create_user(user: UserCreate):
+    return handle_create_user(user)

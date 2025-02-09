@@ -1,6 +1,7 @@
 import os
 import importlib
 from fastapi import FastAPI
+from typing import Union
 
 app = FastAPI()
 
@@ -29,8 +30,8 @@ for folder in os.listdir(ROUTES_DIR):
         module = importlib.import_module(module_path)
         
         # Check if the module has a router attribute and include it in the app
-        if hasattr(module, f"{folder}_router"):
-            router = getattr(module, f"{folder}_router")
+        if hasattr(module, f"router"):
+            router = getattr(module, f"router")
             app.include_router(
                 router,
                 prefix=f"/{folder}",
