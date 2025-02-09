@@ -10,24 +10,24 @@ async def root():
     return {"message": "Welcome to FastAPI"}
 
 # Dynamic route loading (modified for serverless)
-try:
-    ROUTES_DIR = os.path.join(os.path.dirname(__file__), "routes")
-    for folder in os.listdir(ROUTES_DIR):
-        folder_path = os.path.join(ROUTES_DIR, folder)
+# try:
+#     ROUTES_DIR = os.path.join(os.path.dirname(__file__), "routes")
+#     for folder in os.listdir(ROUTES_DIR):
+#         folder_path = os.path.join(ROUTES_DIR, folder)
         
-        if os.path.isdir(folder_path) and "index.py" in os.listdir(folder_path):
-            # Use absolute imports for serverless environments
-            module_path = f"routes.{folder}.index"
-            module = importlib.import_module(module_path)
+#         if os.path.isdir(folder_path) and "index.py" in os.listdir(folder_path):
+#             # Use absolute imports for serverless environments
+#             module_path = f"routes.{folder}.index"
+#             module = importlib.import_module(module_path)
             
-            if hasattr(module, "router"):
-                app.include_router(
-                    module.router,
-                    prefix=f"/{folder}",
-                    tags=[folder.capitalize()]
-                )
-except Exception as e:
-    print(f"Error loading routes: {str(e)}")
-    raise
+#             if hasattr(module, "router"):
+#                 app.include_router(
+#                     module.router,
+#                     prefix=f"/{folder}",
+#                     tags=[folder.capitalize()]
+#                 )
+# except Exception as e:
+#     print(f"Error loading routes: {str(e)}")
+#     raise
 
 #  pip freeze > requirements.txt
