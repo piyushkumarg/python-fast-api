@@ -14,7 +14,7 @@
   ],
   "functions": {
     "main.py": {
-      "includeFiles": "routes/**"
+      "includeFiles": "app/routes/**"
     }
   }
 }
