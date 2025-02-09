@@ -1,6 +1,6 @@
 from fastapi import APIRouter
-from app.controllers.user import handle_get_users, handle_create_user
-from app.schemas.user import UserCreate, UserResponse
+from app.controllers.user_controller import handle_get_users, handle_create_user
+from app.schemas.user_schema import UserCreate, UserResponse
 from typing import List
 
 router = APIRouter()

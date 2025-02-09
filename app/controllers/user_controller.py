@@ -1,6 +1,6 @@
 from fastapi import HTTPException
-from app.services.user import get_all_users, create_user
-from app.schemas.user import UserCreate, UserResponse
+from app.services.user_service import get_all_users, create_user
+from app.schemas.user_schema import UserCreate, UserResponse
 from typing import List
 
 def handle_get_users() -> List[UserResponse]:
