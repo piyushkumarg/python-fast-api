@@ -1,6 +1,4 @@
-Here's a basic `README.md` file for your FastAPI backend project. You can add or modify sections as needed:
 
-````markdown
 # FastAPI Backend API
 
 This is a simple FastAPI backend API project. It is built with Python and FastAPI to serve as the backend for a web or mobile application. It includes dynamic routing and schema validation with Pydantic.
@@ -10,10 +8,8 @@ This is a simple FastAPI backend API project. It is built with Python and FastAP
 - [Installation](#installation)
 - [Usage](#usage)
 - [Project Structure](#project-structure)
-- [API Endpoints](#api-endpoints)
 - [Important Commands](#important-commands)
 - [Contributing](#contributing)
-- [License](#license)
 
 ## Installation
 
@@ -29,7 +25,7 @@ This is a simple FastAPI backend API project. It is built with Python and FastAP
    git clone https://github.com/your-username/your-project-name.git
    cd your-project-name
    ```
-````
+
 
 2. Create a virtual environment:
 
@@ -75,8 +71,7 @@ This starts the FastAPI app on `http://127.0.0.1:8000` by default.
 
 Once the server is running, you can access the auto-generated API documentation by navigating to:
 
-- **Swagger UI**: `http://127.0.0.1:8000/docs`
-- **ReDoc**: `http://127.0.0.1:8000/redoc`
+- **API Docs**: `http://127.0.0.1:8000/docs`
 
 ### Environment Variables
 
