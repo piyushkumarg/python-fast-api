@@ -1,0 +1,48 @@
+# Byte-compiled / cache files
+__pycache__/
+*.py[cod]
+*.swp
+*.swo
+
+# Virtual environment
+venv/
+.env
+.venv/
+env/
+*.venv
+
+# Python environment files
+Pipfile
+Pipfile.lock
+poetry.lock
+
+# Dependency cache
+*.egg-info/
+.eggs/
+*.whl
+*.dist-info/
+
+# IDE / Editor settings
+.vscode/
+.idea/
+*.iml
+
+# Logs and debug files
+logs/
+*.log
+
+# Database and migrations
+migrations/
+alembic/versions/
+*.sqlite3
+db.sqlite3
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Jupyter Notebooks
+.ipynb_checkpoints/
+
+# Vercel deployment
+.vercel/
