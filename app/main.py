@@ -5,12 +5,6 @@ from typing import Union
 
 app = FastAPI()
 
-import os
-import importlib
-from fastapi import FastAPI
-
-app = FastAPI()
-
 # Define a GET endpoint for the root URL
 @app.get("/")
 def read_root():
