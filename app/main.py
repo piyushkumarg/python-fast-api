@@ -1,21 +1,40 @@
+import os
+import importlib
 from fastapi import FastAPI
-from typing import Union
 
-# Initialize FastAPI
 app = FastAPI()
 
+import os
+import importlib
+from fastapi import FastAPI
+
+app = FastAPI()
+
+# Define a GET endpoint for the root URL
 @app.get("/")
 def read_root():
+    # Return a simple greeting message
     return {"Hello": "World Piyush"}
 
-@app.get("/test1")
-def read_root():
-    return {"Test": "test1"}
+# Directory containing route modules
+ROUTES_DIR = os.path.join(os.path.dirname(__file__), "routes")
 
-@app.get("/items/{item_id}")
-def read_item(item_id: int, q: Union[str, None] = None):
-    return {"item_id": item_id, "q": q}
+# Iterate over each folder in the routes directory
+for folder in os.listdir(ROUTES_DIR):
+    folder_path = os.path.join(ROUTES_DIR, folder)
 
-
+    # Check if the folder contains an index.py and is a directory
+    if os.path.isdir(folder_path) and f"index.py" in os.listdir(folder_path):
+        module_path = f"routes.{folder}.index"
+        module = importlib.import_module(module_path)
+        
+        # Check if the module has a router attribute and include it in the app
+        if hasattr(module, f"{folder}_router"):
+            router = getattr(module, f"{folder}_router")
+            app.include_router(
+                router,
+                prefix=f"/{folder}",
+                tags=[folder.capitalize()]
+            )
 
 #  pip freeze > requirements.txt
